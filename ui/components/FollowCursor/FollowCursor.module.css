@@ -1,0 +1,10 @@
+.dot {
+    position: absolute;
+    border: solid 1px #ffe10d;
+    background-color: #ffe10d;
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%;
+    transition-timing-function: linear;
+    transition-duration: 300ms
+}
