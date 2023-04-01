@@ -21,10 +21,11 @@ const InfoContainer = ({
       left: mouseX,
       width: '50vw',
       height: '50vh',
-      border: '1px solid white',
+      border: '1px solid',
       pointerEvents: 'none',
+      background: 'beige',
     }}
-    className="transition-info-container"
+    className="transition-timing-function-linear transition-duration-500ms"
   >
     <h1>{name}</h1>
   </div>
@@ -33,12 +34,12 @@ const InfoContainer = ({
 const AboutMeItem = ({ i, item }: { i: string; item: string }) => {
   return (
     <>
-      <div>
+      <div data-cursor="small">
         <div className="d-flex align-items-baseline mb-3">
-          <div className="mr-2">
-            <h5 className="text-lg">{i}.</h5>
+          <div className="mr-1">
+            <h5 className="font-light text-lg">{i}.</h5>
           </div>
-          <h1 className="text-huge">{item}</h1>
+          <h1 className="text-huge font-normal">{item}</h1>
         </div>
       </div>
     </>
@@ -46,7 +47,10 @@ const AboutMeItem = ({ i, item }: { i: string; item: string }) => {
 };
 
 export const AboutMe = () => {
-  const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
+  const [mousePosition, setMousePosition] = useState({
+    mouseX: 0,
+    mouseY: 0,
+  });
   const [showInfo, setShowInfo] = useState(false);
   const [name, setName] = useState('');
 
@@ -54,7 +58,7 @@ export const AboutMe = () => {
 
   const handleOnMouseMove =
     (name: string) => (e: MouseEvent<HTMLDivElement>) => {
-      setMousePosition({ mouseX: e.clientX, mouseY: e.clientY });
+      setMousePosition({ mouseX: e.clientX + 20, mouseY: e.clientY + 20 });
       setName(name);
     };
 
@@ -67,18 +71,24 @@ export const AboutMe = () => {
   };
 
   return (
-    <div onMouseOver={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
-      <InfoContainer
-        visibility={showInfo ? 'visible' : 'hidden'}
-        mouseX={mouseX}
-        mouseY={mouseY}
-        name={name}
-      />
-      {aboutMeItems.map((aboutMeItem, i) => (
-        <div key={i} onMouseMove={handleOnMouseMove(aboutMeItem)}>
-          <AboutMeItem item={aboutMeItem} i={`0${i + 1}`} />
-        </div>
-      ))}
+    <div
+      onMouseOver={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
+      className="container m-auto"
+    >
+      <div className="d-flex column d-inline-block">
+        <InfoContainer
+          visibility={showInfo && mouseX > 0 ? 'visible' : 'hidden'}
+          mouseX={mouseX}
+          mouseY={mouseY}
+          name={name}
+        />
+        {aboutMeItems.map((aboutMeItem, i) => (
+          <div key={i} onMouseMove={handleOnMouseMove(aboutMeItem)}>
+            <AboutMeItem item={aboutMeItem} i={`0${i + 1}`} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

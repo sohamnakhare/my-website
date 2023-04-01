@@ -17,7 +17,7 @@ export default function Home() {
       <main className={inter.className}>
         <div className="container-fluid">
           <div className="py-2">
-            <h1>Soham Nakhare</h1>
+            <h1 className="font-medium">Soham Nakhare</h1>
           </div>
           <div className="py-4">
             <AboutMe />

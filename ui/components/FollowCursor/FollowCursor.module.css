@@ -1,10 +1,18 @@
 .dot {
     position: absolute;
-    border: solid 1px #ffe10d;
-    background-color: #ffe10d;
-    width: 10px; 
-    height: 10px; 
-    border-radius: 50%;
+    border: solid 1px rgb(var(--cursor-dot-rgb));
     transition-timing-function: linear;
     transition-duration: 300ms
+}
+
+.normal-dot {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+}
+
+.small-dot {
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%;
 }

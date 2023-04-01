@@ -3,10 +3,18 @@ import styles from './FollowCursor.module.css';
 
 export const FollowCursor = () => {
   const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
+  const [cursorType, setCursorType] = useState('normal');
   const { mouseX, mouseY } = mousePosition;
 
   const handleMouseMove = (e: MouseEvent) => {
     setMousePosition({ mouseX: e.clientX, mouseY: e.clientY });
+    const dataCursor = e.target?.closest('[data-cursor]');
+    if (dataCursor) {
+      const cursorType = dataCursor.dataset.cursor;
+      setCursorType(cursorType);
+    } else {
+      setCursorType('normal');
+    }
   };
 
   useLayoutEffect(() => {
@@ -14,13 +22,13 @@ export const FollowCursor = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const dotPosition = () => ({ left: mouseX - 4, top: mouseY - 4 });
+  const dotPosition = () => ({ left: mouseX - 20, top: mouseY - 20 });
 
   return (
     <>
       <span
         style={{ ...dotPosition(), pointerEvents: 'none' }}
-        className={styles.dot}
+        className={`${styles.dot} ${styles[cursorType + '-dot']}`}
       ></span>
     </>
   );
