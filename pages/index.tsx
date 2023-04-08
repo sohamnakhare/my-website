@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { FollowCursor } from '@/ui/components/FollowCursor/FollowCursor';
 import { AboutMe } from '@/ui/components/AboutMe/AboutMe';
+import { Shake } from '@/ui/components/Shake/Shake';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,9 +18,20 @@ export default function Home() {
       <main className={inter.className}>
         <div className="container-fluid">
           <div className="py-2">
-            <h1 className="font-medium">Soham Nakhare</h1>
+            <Shake>
+              <h1 className="font-medium">Soham Nakhare</h1>
+            </Shake>
           </div>
-          <div className="py-4">
+          <div className="container m-auto py-4">
+            <div className="d-flex pointer-default">
+              <h2 className="flex-shrink-none mr-1">I am a</h2>
+              <h1 className="text-huge">
+                Experienced Full-Stack Web Developer, Delivering Clean
+                Applications with Precision
+              </h1>
+            </div>
+          </div>
+          <div className="container m-auto py-4 full-screen-height">
             <AboutMe />
           </div>
         </div>

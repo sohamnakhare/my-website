@@ -2,7 +2,7 @@
     position: absolute;
     border: solid 1px rgb(var(--cursor-dot-rgb));
     transition-timing-function: linear;
-    transition-duration: 300ms
+    transition-duration: 200ms
 }
 
 .normal-dot {
