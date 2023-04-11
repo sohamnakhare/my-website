@@ -3,10 +3,41 @@ import { Inter } from 'next/font/google';
 import { FollowCursor } from '@/ui/components/FollowCursor/FollowCursor';
 import { AboutMe } from '@/ui/components/AboutMe/AboutMe';
 import { Shake } from '@/ui/components/Shake/Shake';
+import { useState } from 'react';
+import classNames from 'classnames';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const moreInfoOf = {
+  experience:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+  fullstack:
+    'arum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic ',
+  cleancode:
+    'agni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima ve',
+};
+
 export default function Home() {
+  const [showBlurredText, setShowBlurredText] = useState(true);
+  const [moreInfo, setMoreInfo] = useState<string>('fullstack');
+
+  const handleMouseEnter = (infoOf: string) => () => {
+    setShowBlurredText(true);
+    // setMoreInfo(infoOf);
+  };
+
+  const handleMouseLeave = () => {
+    // setShowBlurredText(false);
+  };
+
+  const moreInfoClasses = classNames(
+    'container m-auto text-lg layer-1 text-bg',
+    {
+      'fade-in-up': showBlurredText,
+      hidden: !showBlurredText,
+    }
+  );
+
   return (
     <>
       <Head>
@@ -17,23 +48,65 @@ export default function Home() {
       </Head>
       <main className={inter.className}>
         <div className="container-fluid">
-          <div className="py-2">
+          {/* <div className="py-2">
             <Shake>
               <h1 className="font-medium">Soham Nakhare</h1>
             </Shake>
+          </div> */}
+          <div
+            className={moreInfoClasses}
+            style={{ height: '100px', position: 'relative', top: 200 }}
+            key={moreInfo}
+          >
+            {moreInfoOf[moreInfo]}
           </div>
           <div className="container m-auto py-4">
-            <div className="d-flex pointer-default">
-              <h2 className="flex-shrink-none mr-1">I am a</h2>
-              <h1 className="text-huge">
-                Experienced Full-Stack Web Developer, Delivering Clean
-                Applications with Precision
+            <div className="pointer-default">
+              <h1 className="text-large font-medium" data-cursor="large">
+                Hey ! I am a Soham
               </h1>
+              <br />
+              <br />
+              <div className="relative layer-2">
+                <h1 className="text-huge font-medium" data-cursor="large">
+                  {/* <span
+                    className={
+                      moreInfo === 'experience'
+                        ? 'italics pointer text-shadow'
+                        : ''
+                    }
+                    onMouseEnter={handleMouseEnter('experience')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    Experienced
+                  </span>{' '}
+                  <br /> */}
+                  <span
+                    className="pointer"
+                    onMouseEnter={handleMouseEnter('fullstack')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    Full-Stack Web Developer
+                  </span>
+                  , <br />
+                  <span
+                    onMouseEnter={handleMouseEnter('cleancode')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    Delivering Clean Applications with Precision
+                  </span>
+                </h1>
+                <br />
+                <br />
+                <h1 className="text-large font-medium" data-cursor="large">
+                  My hands are dirty since 2013
+                </h1>
+              </div>
             </div>
           </div>
-          <div className="container m-auto py-4 full-screen-height">
+          {/* <div className="container m-auto py-4 full-screen-height">
             <AboutMe />
-          </div>
+          </div> */}
         </div>
         <FollowCursor />
       </main>

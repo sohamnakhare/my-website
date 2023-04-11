@@ -8,17 +8,20 @@ export const FollowCursor = () => {
 
   const handleMouseMove = (e: MouseEvent) => {
     setMousePosition({ mouseX: e.clientX, mouseY: e.clientY });
+    document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
+    document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
     const dataCursor = e.target?.closest('[data-cursor]');
     if (dataCursor) {
       const cursorType = dataCursor.dataset.cursor;
       setCursorType(cursorType);
     } else {
-      setCursorType('normal');
+      setCursorType('small');
     }
   };
 
   useLayoutEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
+
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 

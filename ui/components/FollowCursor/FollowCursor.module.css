@@ -1,18 +1,29 @@
 .dot {
     position: absolute;
-    border: solid 1px rgb(var(--cursor-dot-rgb));
     transition-timing-function: linear;
-    transition-duration: 200ms
+    transition-duration: 200ms;
+    z-index: 10;
+    background: rgba(255, 165, 0, 0.5);
+    box-shadow: 0 0 60px 30px rgba(255, 165, 0, 0.4), 0 0 100px 60px rgba(255, 165, 0, 0.3), 0 0 140px 90px rgba(255, 165, 0, 0.2);
+    border-radius: 50%;
 }
 
 .normal-dot {
     width: 40px; 
     height: 40px; 
-    border-radius: 50%;
 }
 
 .small-dot {
     width: 20px; 
     height: 20px; 
-    border-radius: 50%;
+    
+}
+
+.large-dot {
+    width: 80px; 
+    height: 80px;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 2px;
 }

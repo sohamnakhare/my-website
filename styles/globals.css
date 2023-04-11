@@ -5,9 +5,9 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --foreground-rgb: 57, 62, 70;
-  --background-rgb: 247, 247, 247;
-  --cursor-dot-rgb: 146, 154, 171;
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 246, 241, 233;
+  --cursor-dot-rgb: 0, 0, 0;
   --middleground-rgb: 238, 238, 238;
 }
 
@@ -15,6 +15,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
 }
 
 html,
@@ -36,8 +37,16 @@ body {
   background-color: rgb(var(--middleground-rgb));
 }
 
+.color-white {
+  color: white
+}
+
 .full-screen-height {
   height: 100vh;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 /* atomic classes */
@@ -51,6 +60,30 @@ body {
 
 .d-inline-block {
   display: inline-block;
+}
+
+.relative {
+  position: relative;
+}
+
+.exclusion {
+  mix-blend-mode: exclusion;
+}
+
+.layer-1 {
+  z-index: 11;
+}
+
+.layer-2 {
+  z-index: 100;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 /* flex */
@@ -81,7 +114,7 @@ body {
 }
 
 .text-huge {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .text-sm {
@@ -111,6 +144,15 @@ body {
 .fg-text-color-lighter {
   color: rgba(var(--foreground-rgb), 0.5);
 }
+
+.italics {
+  font-style: italic;
+}
+
+.text-bg {
+  color: rgb(var(--background-rgb));
+}
+
 /*************************/
 
 /* spacing */
@@ -126,6 +168,11 @@ body {
   padding: 2rem;
 }
 
+.py-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -138,6 +185,11 @@ body {
 
 .m-auto {
   margin: auto;
+}
+
+.text-blurry {
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 /*************************/
 
@@ -153,7 +205,7 @@ body {
 /* animations */
 .shake {
   animation: shake;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 
 @keyframes shake {
@@ -166,10 +218,46 @@ body {
   }
 
   30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-2px, 0, 0);
   }
 
   40%, 60% {
-    transform: translate3d(4px, 0, 0);
+    transform: translate3d(2px, 0, 0);
   }
 }
+
+
+.fade-in-up {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0);
+      opacity: 0
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0);
+      opacity: 0
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
