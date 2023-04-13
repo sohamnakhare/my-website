@@ -6,7 +6,7 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 117,208,246;
+  --background-rgb: 250,126,1;
   --background-alt-rgb: 255,222,107;
   --cursor-dot-rgb: 0, 0, 0;
   --middleground-rgb: 238, 238, 238;
@@ -29,7 +29,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background:linear-gradient(rgba(var(--background-rgb), 0.5), rgba(var(--background-rgb), 0.1));
+  background:#FE9C39;
 }
 
 .magic {
