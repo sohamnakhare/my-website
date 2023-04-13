@@ -19,6 +19,7 @@ const moreInfoOf = {
 
 export default function Home() {
   const [showBlurredText, setShowBlurredText] = useState(true);
+  const [contentVisibility, setContentVisibility] = useState(true);
   const [moreInfo, setMoreInfo] = useState<string>('fullstack');
 
   const handleMouseEnter = (infoOf: string) => () => {
@@ -30,13 +31,13 @@ export default function Home() {
     // setShowBlurredText(false);
   };
 
-  const moreInfoClasses = classNames(
-    'container m-auto text-lg layer-1 text-bg',
-    {
-      'fade-in-up': showBlurredText,
-      hidden: !showBlurredText,
-    }
-  );
+  const handleMainContentVisibility = (visibility) => () => {
+    setContentVisibility(visibility);
+  };
+
+  const mainClasses = classNames(inter.className, {
+    'bg-alt': !contentVisibility,
+  });
 
   return (
     <>
@@ -46,67 +47,79 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={inter.className}>
+      <main className={mainClasses}>
         <div className="container-fluid">
-          {/* <div className="py-2">
-            <Shake>
-              <h1 className="font-medium">Soham Nakhare</h1>
-            </Shake>
-          </div> */}
           <div
-            className={moreInfoClasses}
-            style={{ height: '100px', position: 'relative', top: 200 }}
-            key={moreInfo}
+            className="container m-auto"
+            onMouseEnter={handleMainContentVisibility(false)}
+            onMouseLeave={handleMainContentVisibility(true)}
+            data-cursor="large"
+            style={{ left: 0, right: 0, top: 0, bottom: 0 }}
           >
-            {moreInfoOf[moreInfo]}
-          </div>
-          <div className="container m-auto py-4">
-            <div className="pointer-default">
-              <h1 className="text-large font-medium" data-cursor="large">
-                Hey ! I am a Soham
-              </h1>
-              <br />
-              <br />
-              <div className="relative layer-2">
-                <h1 className="text-huge font-medium" data-cursor="large">
-                  {/* <span
-                    className={
-                      moreInfo === 'experience'
-                        ? 'italics pointer text-shadow'
-                        : ''
-                    }
-                    onMouseEnter={handleMouseEnter('experience')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    Experienced
-                  </span>{' '}
-                  <br /> */}
-                  <span
-                    className="pointer"
-                    onMouseEnter={handleMouseEnter('fullstack')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    Full-Stack Web Developer
-                  </span>
-                  , <br />
-                  <span
-                    onMouseEnter={handleMouseEnter('cleancode')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    Delivering Clean Applications with Precision
-                  </span>
-                </h1>
+            {contentVisibility && (
+              <div
+                className="pointer-default relative layer-2 d-flex full-screen-height column"
+                style={{ justifyContent: 'center' }}
+              >
+                <h1 className="text-large font-medium">Hey ! I am a Soham</h1>
                 <br />
                 <br />
-                <h1 className="text-large font-medium" data-cursor="large">
-                  My hands are dirty since 2013
-                </h1>
+                <div className="relative layer-2">
+                  <h1 className="text-huge font-medium">
+                    <span
+                      className="pointer"
+                      onMouseEnter={handleMouseEnter('fullstack')}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      Full-Stack Web Developer
+                    </span>
+                    , <br />
+                    <span
+                      onMouseEnter={handleMouseEnter('cleancode')}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      Delivering Clean Applications with Precision
+                    </span>
+                  </h1>
+                  <br />
+                  <br />
+                  <h1 className="text-large font-medium" data-cursor="large">
+                    My hands are dirty since 2013
+                  </h1>
+                </div>
               </div>
-            </div>
+            )}
+            {!contentVisibility && (
+              <div className="relative layer-2 d-flex full-screen-height align-items-center">
+                <div className="d-flex space-between ">
+                  <div
+                    style={{ transform: 'rotate(-90deg)' }}
+                    className="text-huge font-medium"
+                  >
+                    Hi ! I am Soham
+                  </div>
+                  <div
+                    className="text-lg font-medium"
+                    style={{ flexBasis: '35%' }}
+                  >
+                    I am a Full-Stack Web Developer with a passion for
+                    delivering clean, precise applications that exceed client
+                    expectations. With [number of years] of experience in the
+                    field, I have honed my skills in both front-end and back-end
+                    development, enabling me to handle a wide range of tasks and
+                    projects. <br />
+                    Skills: <br />
+                    Front-End Development: HTML, CSS, JavaScript, React,
+                    Angular, Vue.js <br />
+                    Back-End Development: Node.js, PHP, Python, Ruby on Rails,
+                    ASP.NET Database <br />
+                    Technologies: MySQL, MongoDB, PostgreSQL, SQLite Other
+                    Technologies: Git, AWS, Docker, Jenkins, Linux
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          {/* <div className="container m-auto py-4 full-screen-height">
-            <AboutMe />
-          </div> */}
         </div>
         <FollowCursor />
       </main>

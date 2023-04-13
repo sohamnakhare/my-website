@@ -3,14 +3,16 @@
     transition-timing-function: linear;
     transition-duration: 200ms;
     z-index: 10;
-    background: rgba(255, 165, 0, 0.5);
-    box-shadow: 0 0 60px 30px rgba(255, 165, 0, 0.4), 0 0 100px 60px rgba(255, 165, 0, 0.3), 0 0 140px 90px rgba(255, 165, 0, 0.2);
     border-radius: 50%;
 }
 
 .normal-dot {
-    width: 40px; 
-    height: 40px; 
+    width: 60px; 
+    height: 60px; 
+    background: radial-gradient(rgba(255,234,67), rgb(255,189,51));
+    box-shadow: 0 0 60px 30px rgba(255,234,67, 0.5), 0 0 100px 90px rgba(255,234,67, 0.4);
+    animation: turn 3s ease-out 0s infinite;
+    background-size: 200% 200%;
 }
 
 .small-dot {
@@ -20,10 +22,23 @@
 }
 
 .large-dot {
-    width: 80px; 
-    height: 80px;
+    width: 30vw; 
+    height: 30vw;
+    background: radial-gradient(rgba(255,234,67), rgb(255,189,51));
+    box-shadow: 0 0 60px 100px rgba(255,234,67, 0.5), 0 0 100px 200px rgba(255,234,67, 0.4), 0 0 140px 300px rgba(255,234,67, 0.3), 0 0 200px 500px rgba(255,234,67, 0.2);
+    animation: turn 3s ease-out 0s infinite;
+    background-size: 200% 200%;
 }
 
 .text-shadow {
     text-shadow: 2px 2px 2px;
+}
+
+@keyframes turn {
+    0%, 100% {
+      background-position: 20% 70%;
+    }
+    50% {
+      background-position: 80% 70%;
+    }
 }

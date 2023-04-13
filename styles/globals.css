@@ -1,14 +1,17 @@
 :root {
-  --max-width: 1100px;
+  --max-width: 1000px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 246, 241, 233;
+  --background-rgb: 117,208,246;
+  --background-alt-rgb: 255,222,107;
   --cursor-dot-rgb: 0, 0, 0;
   --middleground-rgb: 238, 238, 238;
+  --cursorX: calc(50% - 10rem);
+  --cursorY: calc(50% - 10rem);
 }
 
 * {
@@ -26,7 +29,19 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  background:linear-gradient(rgba(var(--background-rgb), 0.5), rgba(var(--background-rgb), 0.1));
+}
+
+.magic {
+  z-index: 5;
+  position: absolute;
+  top: var(--cursorX);
+  left: var(--cursorY);
+  width: 20rem;
+  height: 20rem;
+  background: url('/sample.jpeg') 50% 50% no-repeat fixed;
+  background-size: cover;
+  border-radius: 50%;
 }
 
 .pointer-default {
@@ -49,6 +64,10 @@ body {
   cursor: pointer;
 }
 
+.bg-alt {
+  background: rgb(var(--background-alt-rgb));
+}
+
 /* atomic classes */
 .container-fluid {
   margin: 0 40px;
@@ -64,6 +83,10 @@ body {
 
 .relative {
   position: relative;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .exclusion {
@@ -106,6 +129,15 @@ body {
 .flex-shrink-none {
   flex-shrink: 0;
 }
+
+img {
+  width: 10rem;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
 /*************************/
 
 /* typography */

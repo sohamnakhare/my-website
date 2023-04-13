@@ -8,14 +8,16 @@ export const FollowCursor = () => {
 
   const handleMouseMove = (e: MouseEvent) => {
     setMousePosition({ mouseX: e.clientX, mouseY: e.clientY });
-    document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
-    document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
+    // var magic = document.getElementsByClassName('magic');
+    // var magicWHalf = magic[0].offsetWidth / 2;
+    // document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
+    // document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
     const dataCursor = e.target?.closest('[data-cursor]');
     if (dataCursor) {
       const cursorType = dataCursor.dataset.cursor;
       setCursorType(cursorType);
     } else {
-      setCursorType('small');
+      setCursorType('normal');
     }
   };
 
