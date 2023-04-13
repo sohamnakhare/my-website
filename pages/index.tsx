@@ -1,37 +1,15 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import { FollowCursor } from '@/ui/components/FollowCursor/FollowCursor';
-import { AboutMe } from '@/ui/components/AboutMe/AboutMe';
-import { Shake } from '@/ui/components/Shake/Shake';
 import { useState } from 'react';
 import classNames from 'classnames';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const moreInfoOf = {
-  experience:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
-  fullstack:
-    'arum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic ',
-  cleancode:
-    'agni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima ve',
-};
-
 export default function Home() {
-  const [showBlurredText, setShowBlurredText] = useState(true);
   const [contentVisibility, setContentVisibility] = useState(true);
-  const [moreInfo, setMoreInfo] = useState<string>('fullstack');
 
-  const handleMouseEnter = (infoOf: string) => () => {
-    setShowBlurredText(true);
-    // setMoreInfo(infoOf);
-  };
-
-  const handleMouseLeave = () => {
-    // setShowBlurredText(false);
-  };
-
-  const handleMainContentVisibility = (visibility) => () => {
+  const handleMainContentVisibility = (visibility: boolean) => () => {
     setContentVisibility(visibility);
   };
 
@@ -66,20 +44,9 @@ export default function Home() {
                 <br />
                 <div className="relative layer-2">
                   <h1 className="text-huge font-medium">
-                    <span
-                      className="pointer"
-                      onMouseEnter={handleMouseEnter('fullstack')}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      Full-Stack Web Developer
-                    </span>
+                    <span className="pointer">Full-Stack Web Developer</span>
                     , <br />
-                    <span
-                      onMouseEnter={handleMouseEnter('cleancode')}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      Delivering Clean Applications with Precision
-                    </span>
+                    <span>Delivering Clean Applications with Precision</span>
                   </h1>
                   <br />
                   <br />

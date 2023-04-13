@@ -8,10 +8,7 @@ export const FollowCursor = () => {
 
   const handleMouseMove = (e: MouseEvent) => {
     setMousePosition({ mouseX: e.clientX, mouseY: e.clientY });
-    // var magic = document.getElementsByClassName('magic');
-    // var magicWHalf = magic[0].offsetWidth / 2;
-    // document.documentElement.style.setProperty('--cursorX', e.clientX + 'px');
-    // document.documentElement.style.setProperty('--cursorY', e.clientY + 'px');
+    // @ts-ignore
     const dataCursor = e.target?.closest('[data-cursor]');
     if (dataCursor) {
       const cursorType = dataCursor.dataset.cursor;
