@@ -66,8 +66,8 @@ export default function Home() {
                     Hi ! I am Soham
                   </div>
                   <div
-                    className="text-lg font-medium"
-                    style={{ flexBasis: '35%' }}
+                    className="text-md font-medium"
+                    style={{ flexBasis: '30%' }}
                   >
                     I am a Full-Stack Web Developer with a passion for
                     delivering clean, precise applications that exceed client
