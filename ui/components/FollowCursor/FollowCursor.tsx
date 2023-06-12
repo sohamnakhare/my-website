@@ -1,9 +1,14 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styles from './FollowCursor.module.css';
 
+const dotPostitionOffset = {
+  normal: 10,
+  large: 250,
+};
+
 export const FollowCursor = () => {
   const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
-  const [cursorType, setCursorType] = useState('normal');
+  const [cursorType, setCursorType] = useState<'normal' | 'large'>('normal');
   const { mouseX, mouseY } = mousePosition;
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -24,7 +29,10 @@ export const FollowCursor = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const dotPosition = () => ({ left: mouseX - 20, top: mouseY - 20 });
+  const dotPosition = () => ({
+    left: mouseX - dotPostitionOffset[cursorType],
+    top: mouseY - dotPostitionOffset[cursorType],
+  });
 
   return (
     <>
